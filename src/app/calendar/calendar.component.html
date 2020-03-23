@@ -1,0 +1,38 @@
+<div class="calendar">
+    <div class="header">
+        <i class="fa fa-angle-left" (click)="previous()"></i>
+        <span id="month"></span>
+        <i class="fa fa-angle-right" (click)="next()"></i>
+    </div>
+    <div class="month">
+        <div class="week">
+            <div *ngFor="let day of Days" class="week_name">
+                <span class="day">{{day.name}}</span>
+            </div>
+        </div>
+        <div class="day_numbers">
+            <div class="week">
+                
+                <div *ngFor="let numb of Before_month" class="week_flex">
+                    <div [ngClass]="{'today': (numb == todayNumber && todayMonth == Month && todayYear == Year)}" class="day_number before">
+                        <span class="day">{{numb}}</span>
+                    </div>
+                </div>
+                
+                <div *ngFor="let numb of Month_numbers" class="week_flex">
+                    <div [ngClass]="{'today': (numb == todayNumber && todayMonth == Month && todayYear == Year)}" class="day_number">
+                        <span class="day">{{numb}}</span>
+                    </div>
+                </div>
+
+                <div *ngFor="let numb of After_month" class="week_flex">
+                    <div [ngClass]="{'today': (numb == todayNumber && todayMonth == Month && todayYear == Year)}" class="day_number after">
+                        <span class="day">{{numb}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
