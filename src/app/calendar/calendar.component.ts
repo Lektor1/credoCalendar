@@ -1,24 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { WeekDay } from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import {AppComponent} from 'src/app/app.Component';
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
 
-  constructor() { }
+
+export class CalendarComponent implements OnInit{
+
+  constructor() {
+    
+  }
 
   Days = [
-    { id: 0, name: 'M' },
-    { id: 1, name: 'T' },
-    { id: 2, name: 'W' },
-    { id: 3, name: 'T' },
-    { id: 4, name: 'F' },
-    { id: 5, name: 'S' },
-    { id: 6, name: 'S' }
+    "Mo",
+    'Tu',
+    'We',
+    'Th',
+    'Fr',
+    'Sa',
+    'Su'
   ];
+  
   Months = [
     'January',
     'February',
@@ -41,11 +50,14 @@ export class CalendarComponent implements OnInit {
   Month = new Date().getMonth();
   todayMonth = this.Month;
   Year = new Date().getFullYear();
+
   todayYear = this.Year;
   dayNumber = new Date(this.Year, this.Month + 1, 0).getDate();
   lastMonthdayNumber = new Date(this.Year, this.Month, 0).getDate();
   firstDay = new Date(this.Year, this.Month, 1).getDay();
   todayNumber = new Date().getDate();
+  //test day
+  //todayNumber = 31;
   
   
   ngOnInit() {
@@ -54,11 +66,14 @@ export class CalendarComponent implements OnInit {
 
     this.showMonth(this.Months[this.Month], this.Year);
 
+    
   }
 
   showMonth(mnth, yr){
-    var str = mnth + " " + yr;
-    document.getElementById("month").innerHTML = str;
+    // var translatedMonth = getTranslationDeclStmts(mnth);
+    
+    // var str = "{{ '" + mnth + "' | translate}}";
+    //document.getElementById("month").setAttribute("*ngVar", mnth + " as month");
   }
 
   fillDayNumbers(_firstDay, _lastMonthdayNumber, _dayNumber){
@@ -85,6 +100,12 @@ export class CalendarComponent implements OnInit {
       var len = this.After_month.length + 1;
       for(i = len; i <= len + 6; i++){
         this.After_month.push(i);
+      }
+      if(this.Before_month.length + this.After_month.length < 11){
+        len = this.After_month.length + 1;
+        for(i = len; i <= len + 6; i++){
+          this.After_month.push(i);
+        }
       }
     }
     this.firstDay = 8 - _firstDay;

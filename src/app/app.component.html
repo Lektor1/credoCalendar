@@ -1,5 +1,9 @@
 <div class="language">
-        <img src="assets\imgs\georgia.png">
-        <img src="assets\imgs\uk.png">
+        <img (click)="translate.use('geo')" src="assets\imgs\georgia.png">
+        <img (click)="translate.use('en')" src="assets\imgs\uk.png">
+        <!-- <img  src="assets\imgs\georgia.png"> -->
+        <!-- <img  src="assets\imgs\uk.png"> -->
+        
 </div>
 <app-calendar></app-calendar>
+<!-- <h1>{{ 'WEEK.Mo' | translate }}</h1> -->
