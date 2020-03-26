@@ -1,18 +1,11 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { WeekDay } from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
-import { TranslateService } from '@ngx-translate/core';
-import {AppComponent} from 'src/app/app.Component';
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  selector: 'app-new-cal',
+  templateUrl: './new-cal.component.html',
+  styleUrls: ['./new-cal.component.scss']
 })
-
-
-export class CalendarComponent implements OnInit{
+export class NewCalComponent implements OnInit {
 
   constructor() {
     
@@ -43,6 +36,14 @@ export class CalendarComponent implements OnInit{
     'December'
   ];
 
+  State = [
+    'StateDay',
+    'StateMonth',
+    'StateYear'
+  ];
+  i = 0;
+  StateOn = this.State[this.i];
+
   Before_month=[];
   Month_numbers=[];
   After_month=[];
@@ -57,25 +58,45 @@ export class CalendarComponent implements OnInit{
   firstDay = new Date(this.Year, this.Month, 1).getDay();
   todayNumber = new Date().getDate();
   //test day
-  //todayNumber = 31;
+  //todayNumber = 8;
+
   
+  DisMnth;
+  DisYear;
   
-  ngOnInit() {
+  ngOnInit(): void {
     
     this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
 
-    this.showMonth(this.Months[this.Month], this.Year);
+    this.showTitle(this.Months[this.Month], this.Year);
 
-    
+    console.log(this.Month + " " + this.DisMnth);
   }
 
-  showMonth(mnth, yr){
-    // var translatedMonth = getTranslationDeclStmts(mnth);
-    
-    // var str = "{{ '" + mnth + "' | translate}}";
-    //document.getElementById("month").setAttribute("*ngVar", mnth + " as month");
+  // achvenebs shuashi teksts
+  
+  showTitle(mnth, yr){
+    this.DisMnth = mnth;
+    this.DisYear = yr;
   }
 
+  // cvlis dgeebis, tveebis, wlebis 
+  change(){
+    this.i++;
+    if(this.i == 3){
+      this.i = 0;
+    }
+    this.StateOn = this.State[this.i];
+    if(this.i == 0){
+      this.showTitle(this.Months[this.Month], this.Year);
+    }else if(this.i == 1){
+      this.showTitle('', this.Year);
+    }else if(this.i == 2){
+      this.DisYear = this.Year + " - " + (this.Year + 9);
+    }
+  }
+
+  // avsebs dgeebis masivs
   fillDayNumbers(_firstDay, _lastMonthdayNumber, _dayNumber){
     if(_firstDay == 0){
       _firstDay = 7;
@@ -111,6 +132,7 @@ export class CalendarComponent implements OnInit{
     this.firstDay = 8 - _firstDay;
   }
 
+  //shemdegi tve
   next(){
     if(this.Month == 11){
       this.Month = 0;
@@ -129,10 +151,11 @@ export class CalendarComponent implements OnInit{
 
     this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
 
-    this.showMonth(this.Months[this.Month], this.Year);
+    this.showTitle(this.Months[this.Month], this.Year);
     // console.log(this.Month);
   }
 
+  // wina tve
   previous(){
     if(this.Month == 0){
       this.Month = 11;
@@ -151,12 +174,8 @@ export class CalendarComponent implements OnInit{
 
     this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
 
-    this.showMonth(this.Months[this.Month], this.Year);
+    this.showTitle(this.Months[this.Month], this.Year);
 
     // console.log(this.Month);
   }
-  
-
 }
-
-

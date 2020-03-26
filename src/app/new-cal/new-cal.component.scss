@@ -15,12 +15,15 @@
         align-items: center;
         justify-content: center;
 
-        span {
-            width: 40%;;
-            font-weight: bold;
+        div{
+            width: 40%;
             text-align: center;
+        }
+        span {
+            font-weight: bold;
             color: black;
             font-size: 20px;
+            cursor: pointer;
         }
 
         i{
@@ -37,7 +40,7 @@
         i:first-child{
             padding: 8px 8px 6px 6px;
         }
-        i:last-child{
+        .fa-angle-right{
             padding: 8px 6px 6px 8px;
         }
         i:hover{
@@ -45,8 +48,39 @@
             background-color: #f4511e;
         }
     }
-    .month{
-        margin-top: 10px;       
+    .month_container{
+        margin-top: 10px;
+        
+        .month_names{
+            display: flex;
+            justify-content: space-around;
+            padding: 1.5%;
+            flex-wrap: wrap;
+
+            .month_name{
+                flex: 1 0 calc(25% - 30px);
+                display: flex;
+                justify-content: center;
+                margin: 15px 5px 15px 5px;
+                padding: 10px 10px;
+                cursor: pointer;
+
+                span{
+                    font-size: 20px;
+                }
+            }
+            .month_name:hover{
+                color: white !important;
+                background-color: #f4511e !important;
+                border-radius: 50px !important;
+                box-shadow: 0 0 0px 3px #f4511e;
+            }
+            .today_month{
+                color: white !important;
+                background-color: #f4511e !important;
+                border-radius: 50px !important;
+            }
+        }
     }
 }
 .week{
@@ -57,6 +91,9 @@
 
     .week_name{
         color: #a2a2a2;
+        flex: 1 0 13%;
+        justify-content: center;
+        display: flex;
     }
 }
 .day_number{
@@ -94,4 +131,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media screen and (max-width: 800px){
+    .calendar{
+        width: 540px;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .day_number{
+        margin-bottom: 5px;
+        padding: 0;
+        width: 35px;
+        height: 35px;
+    }
+    .day_number:hover{
+        box-shadow: 0 0 0px 0px #f4511e;
+    }
+    .header span{
+        width: 50% !important;
+    }
 }

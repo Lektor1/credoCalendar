@@ -2,9 +2,13 @@ body{
     margin: 0;
     padding: 0;
     background-color: #e9eaef;
-    font-family: Manti;
+    font-family: Manti, bpg_arial;
 }
 @font-face {
     font-family: Manti;
     src: url(assets/fonts/Manti.otf) format("opentype");
+}
+@font-face {
+    font-family: bpg_arial;
+    src: url(assets/fonts/bpg_arial.ttf) format("opentype");
 }

@@ -1,10 +1,14 @@
 <div class="calendar">
     <div class="header">
         <i class="fa fa-angle-left" (click)="previous()"></i>
-        <span id="month" *ngFor="let mnths of Months ">{{mnths}}</span>
+        <div>
+            <span id="title" (click)="change()">{{DisMnth | translate}} {{DisYear}}</span>
+        </div>
         <i class="fa fa-angle-right" (click)="next()"></i>
+        <!-- <img class="fa fa-angle-right" src="./assets/imgs/icons/next.svg"> -->
     </div>
-    <div class="month">
+    <!-- dgeebi -->
+    <div class="month_container" *ngIf="StateOn === 'StateDay'">
         <div class="week">
             <div *ngFor="let day of Days" class="week_name">
                 <span class="day">{{day | translate}}</span>
@@ -33,6 +37,23 @@
 
             </div>
         </div>
+    
+    </div>
+    <!-- tveebi -->
+    <div class="month_container" *ngIf="StateOn === 'StateMonth'">
+        <div class="month_names">
+            <div class="month_name" *ngFor="let mon of Months" [ngClass]="{'today_month': mon == Months[Month]}">
+                <div >
+                    <span>{{mon | translate}}</span>
+                    <!-- <span>{{mon}}</span> -->
+                    <!-- <span>{{}}</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- wlebi -->
+    <div class="month_container" *ngIf="StateOn === 'StateYear'">
+        <span>hello Year</span>
     </div>
     
 </div>

@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-export * from './calendar/calendar.component';
+import { NewCalComponent } from './new-cal/new-cal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    NewCalComponent
   ],
   imports: [
     BrowserModule,
