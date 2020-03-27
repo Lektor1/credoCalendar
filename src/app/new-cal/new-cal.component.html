@@ -2,10 +2,9 @@
     <div class="header">
         <i class="fa fa-angle-left" (click)="previous()"></i>
         <div>
-            <span id="title" (click)="change()">{{DisMnth | translate}} {{DisYear}}</span>
+            <span id="title" (click)="change()">{{DisMnth | translate}} {{DisYear}} {{DisDecade}}</span>
         </div>
         <i class="fa fa-angle-right" (click)="next()"></i>
-        <!-- <img class="fa fa-angle-right" src="./assets/imgs/icons/next.svg"> -->
     </div>
     <!-- dgeebi -->
     <div class="month_container" *ngIf="StateOn === 'StateDay'">
@@ -43,17 +42,17 @@
     <div class="month_container" *ngIf="StateOn === 'StateMonth'">
         <div class="month_names">
             <div class="month_name" *ngFor="let mon of Months" [ngClass]="{'today_month': mon == Months[Month]}">
-                <div >
-                    <span>{{mon | translate}}</span>
-                    <!-- <span>{{mon}}</span> -->
-                    <!-- <span>{{}}</span> -->
-                </div>
+                <span>{{mon | translate}}</span>
             </div>
         </div>
     </div>
     <!-- wlebi -->
     <div class="month_container" *ngIf="StateOn === 'StateYear'">
-        <span>hello Year</span>
+        <div class="year_numbers">
+            <div class="year" *ngFor="let yr of Year_numbers" [ngClass]="{'today_month': yr == Year}">
+                <span>{{yr}}</span>
+            </div>
+        </div>
     </div>
     
 </div>

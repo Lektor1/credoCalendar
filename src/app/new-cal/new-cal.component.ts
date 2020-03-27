@@ -48,6 +48,8 @@ export class NewCalComponent implements OnInit {
   Month_numbers=[];
   After_month=[];
 
+  Year_numbers=[];
+
   Month = new Date().getMonth();
   todayMonth = this.Month;
   Year = new Date().getFullYear();
@@ -63,6 +65,7 @@ export class NewCalComponent implements OnInit {
   
   DisMnth;
   DisYear;
+  DisDecade;
   
   ngOnInit(): void {
     
@@ -70,30 +73,45 @@ export class NewCalComponent implements OnInit {
 
     this.showTitle(this.Months[this.Month], this.Year);
 
-    console.log(this.Month + " " + this.DisMnth);
+    this.fillYearNumbers(this.Year);
+
+    //console.log(this.Month + " " + this.DisMnth);
   }
 
   // achvenebs shuashi teksts
-  
   showTitle(mnth, yr){
     this.DisMnth = mnth;
     this.DisYear = yr;
   }
 
+  // avsebs wlebis masivs
+  fillYearNumbers(start){
+    for(var i = start; i <= start + 11; i++){
+      this.Year_numbers.push(i);
+    }
+  }
+
   // cvlis dgeebis, tveebis, wlebis 
   change(){
     this.i++;
+
     if(this.i == 3){
       this.i = 0;
     }
+
     this.StateOn = this.State[this.i];
+
     if(this.i == 0){
+      this.DisDecade = '';
       this.showTitle(this.Months[this.Month], this.Year);
     }else if(this.i == 1){
       this.showTitle('', this.Year);
     }else if(this.i == 2){
-      this.DisYear = this.Year + " - " + (this.Year + 9);
+      this.showTitle('','');
+      this.DisDecade = this.Year + " - " + (this.Year + 11);
+      // this.DisYear = 
     }
+
   }
 
   // avsebs dgeebis masivs
@@ -134,48 +152,85 @@ export class NewCalComponent implements OnInit {
 
   //shemdegi tve
   next(){
-    if(this.Month == 11){
-      this.Month = 0;
-      this.Year += 1;
-      //daematos weliwadis gazrda
-    }else{
-      this.Month += 1;
+    if(this.i == 0 ){
+
+      if(this.Month == 11){
+        this.Month = 0;
+        this.Year += 1;
+      }else{
+        this.Month += 1;
+      }
+
+      this.Before_month=[];
+      this.Month_numbers=[];
+      this.After_month=[];
+      this.firstDay = new Date(this.Year, this.Month, 1).getDay();
+      this.lastMonthdayNumber = new Date(this.Year, this.Month, 0).getDate();
+      this.dayNumber = new Date(this.Year, this.Month + 1, 0).getDate();
+
+      this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
+
+      this.showTitle(this.Months[this.Month], this.Year);
+
+    }else if(this.i == 1){
+
+      this.DisYear += 1;
+      var st = +(this.DisYear);
+
+    }else if(this.i == 2){
+
+      // this.fir += 11;
+      
+
+      var st = +this.Year_numbers[11];
+      // console.log(st);
+      this.Year_numbers = [];
+      this.fillYearNumbers(st);
+
+      this.DisDecade = st + " - " + (st + 11);
+
     }
-
-    this.Before_month=[];
-    this.Month_numbers=[];
-    this.After_month=[];
-    this.firstDay = new Date(this.Year, this.Month, 1).getDay();
-    this.lastMonthdayNumber = new Date(this.Year, this.Month, 0).getDate();
-    this.dayNumber = new Date(this.Year, this.Month + 1, 0).getDate();
-
-    this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
-
-    this.showTitle(this.Months[this.Month], this.Year);
+    
     // console.log(this.Month);
   }
 
   // wina tve
   previous(){
-    if(this.Month == 0){
-      this.Month = 11;
-      this.Year -= 1;
-      //daematos weliwadis shemcireba
-    }else{
-      this.Month -= 1;
+
+      if(this.i == 0 ){
+
+      if(this.Month == 0){
+        this.Month = 11;
+        this.Year -= 1;
+      }else{
+        this.Month -= 1;
+      }
+
+      this.Before_month=[];
+      this.Month_numbers=[];
+      this.After_month=[];
+      this.firstDay = new Date(this.Year, this.Month, 1).getDay();
+      this.lastMonthdayNumber = new Date(this.Year, this.Month, 0).getDate();
+      this.dayNumber = new Date(this.Year, this.Month + 1, 0).getDate();
+
+      this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
+
+      this.showTitle(this.Months[this.Month], this.Year);
+
+    }else if(this.i == 1){
+
+      this.DisYear -= 1;
+
+    }else if(this.i == 2){
+
+      var st = +this.Year_numbers[0];
+      st -=11;
+      // console.log(st);
+      this.Year_numbers = [];
+      this.fillYearNumbers(st);
+
+      this.DisDecade = st + " - " + (st + 11);
+
     }
-
-    this.Before_month=[];
-    this.Month_numbers=[];
-    this.After_month=[];
-    this.firstDay = new Date(this.Year, this.Month, 1).getDay();
-    this.lastMonthdayNumber = new Date(this.Year, this.Month, 0).getDate();
-    this.dayNumber = new Date(this.Year, this.Month + 1, 0).getDate();
-
-    this.fillDayNumbers(this.firstDay, this.lastMonthdayNumber, this.dayNumber);
-
-    this.showTitle(this.Months[this.Month], this.Year);
-
-    // console.log(this.Month);
   }
 }

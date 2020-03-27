@@ -51,13 +51,13 @@
     .month_container{
         margin-top: 10px;
         
-        .month_names{
+        .month_names, .year_numbers{
             display: flex;
             justify-content: space-around;
             padding: 1.5%;
             flex-wrap: wrap;
 
-            .month_name{
+            .month_name, .year{
                 flex: 1 0 calc(25% - 30px);
                 display: flex;
                 justify-content: center;
@@ -69,7 +69,7 @@
                     font-size: 20px;
                 }
             }
-            .month_name:hover{
+            .month_name:hover, .year:hover{
                 color: white !important;
                 background-color: #f4511e !important;
                 border-radius: 50px !important;
@@ -132,9 +132,19 @@
     justify-content: center;
     align-items: center;
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 805px){
     .calendar{
         width: 540px;
+    }
+    .month_name{
+        flex: 1 0 calc(27% - 0px) !important;
+        padding: 10px 5px !important;
+    }
+}
+@media screen and (max-width: 870px){
+    .month_name{
+        // flex: 1 0 calc(28% - 0px) !important;
+        margin: 5px 10px !important;
     }
 }
 
