@@ -75,7 +75,7 @@ export class NewCalComponent implements OnInit {
 
     this.fillYearNumbers(this.Year);
 
-    //console.log(this.Month + " " + this.DisMnth);
+    // console.log(this.todayMonth + " "+ this.Month + " " + this.Months[this.Month]);
   }
 
   // achvenebs shuashi teksts
@@ -91,7 +91,7 @@ export class NewCalComponent implements OnInit {
     }
   }
 
-  // cvlis dgeebis, tveebis, wlebis 
+  // cvlis dgeebis, tveebis, wlebis tabebs
   change(){
     this.i++;
 
@@ -157,6 +157,8 @@ export class NewCalComponent implements OnInit {
       if(this.Month == 11){
         this.Month = 0;
         this.Year += 1;
+        this.Year_numbers = [];
+        this.fillYearNumbers(this.Year);
       }else{
         this.Month += 1;
       }
@@ -175,18 +177,19 @@ export class NewCalComponent implements OnInit {
     }else if(this.i == 1){
 
       this.DisYear += 1;
-      var st = +(this.DisYear);
+      this.Year +=1;
+      // var st = +(this.DisYear);
+      this.Year_numbers = [];
+      this.fillYearNumbers(this.Year);
 
     }else if(this.i == 2){
 
-      // this.fir += 11;
-      
 
       var st = +this.Year_numbers[11];
-      // console.log(st);
+      
       this.Year_numbers = [];
       this.fillYearNumbers(st);
-
+      // console.log(st);
       this.DisDecade = st + " - " + (st + 11);
 
     }
@@ -202,6 +205,8 @@ export class NewCalComponent implements OnInit {
       if(this.Month == 0){
         this.Month = 11;
         this.Year -= 1;
+        this.Year_numbers = [];
+        this.fillYearNumbers(this.Year);
       }else{
         this.Month -= 1;
       }
@@ -220,6 +225,11 @@ export class NewCalComponent implements OnInit {
     }else if(this.i == 1){
 
       this.DisYear -= 1;
+      this.Year -=1;
+      // var st = +(this.DisYear);
+      this.Year_numbers = [];
+      this.fillYearNumbers(this.Year);
+
 
     }else if(this.i == 2){
 
@@ -230,6 +240,13 @@ export class NewCalComponent implements OnInit {
       this.fillYearNumbers(st);
 
       this.DisDecade = st + " - " + (st + 11);
+
+      // var st = +this.Year_numbers[0];
+      
+      // this.Year_numbers = [];
+      // this.fillYearNumbers(st);
+      // // console.log(st);
+      // this.DisDecade = st + " - " + (st + 11);
 
     }
   }

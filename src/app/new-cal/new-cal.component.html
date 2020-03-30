@@ -41,7 +41,7 @@
     <!-- tveebi -->
     <div class="month_container" *ngIf="StateOn === 'StateMonth'">
         <div class="month_names">
-            <div class="month_name" *ngFor="let mon of Months" [ngClass]="{'today_month': mon == Months[Month]}">
+            <div class="month_name" *ngFor="let mon of Months" [ngClass]="{'today_month': mon == Months[todayMonth] && DisYear == todayYear}">
                 <span>{{mon | translate}}</span>
             </div>
         </div>
