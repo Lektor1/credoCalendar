@@ -75,7 +75,7 @@ export class NewCalComponent implements OnInit {
 
     this.fillYearNumbers(this.Year);
 
-    // console.log(this.todayMonth + " "+ this.Month + " " + this.Months[this.Month]);
+    // console.log(this.);
   }
 
   // achvenebs shuashi teksts
@@ -200,6 +200,8 @@ export class NewCalComponent implements OnInit {
   // wina tve
   previous(){
 
+      // console.log("1. " +this.Year + " " + this.DisYear + " " + this.todayYear);
+
       if(this.i == 0 ){
 
       if(this.Month == 0){
@@ -241,13 +243,8 @@ export class NewCalComponent implements OnInit {
 
       this.DisDecade = st + " - " + (st + 11);
 
-      // var st = +this.Year_numbers[0];
-      
-      // this.Year_numbers = [];
-      // this.fillYearNumbers(st);
-      // // console.log(st);
-      // this.DisDecade = st + " - " + (st + 11);
-
     }
+
+    // console.log("2. " +this.Year + " " + this.DisYear + " " + this.todayYear);
   }
 }

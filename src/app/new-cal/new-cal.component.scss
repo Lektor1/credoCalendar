@@ -16,7 +16,7 @@
         justify-content: center;
 
         div{
-            width: 40%;
+            width: 200px;
             text-align: center;
         }
         span {
@@ -26,22 +26,22 @@
             cursor: pointer;
         }
 
-        i{
-            //padding: 5px;
+        i, img{
+            // padding: 5px;
             cursor: pointer;
             color: black;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             align-self: center;
             justify-content: center;
             display: flex;
             border-radius: 50px;
         }
-        i:first-child{
-            padding: 8px 8px 6px 6px;
+        .fa-angle-left{
+            padding: 8px 8px 8px 8px;
         }
         .fa-angle-right{
-            padding: 8px 6px 6px 8px;
+            padding: 8px 7px 8px 9px;
         }
         i:hover{
             color: white;
@@ -70,15 +70,15 @@
                 }
             }
             .month_name:hover, .year:hover{
-                color: white !important;
-                background-color: #f4511e !important;
-                border-radius: 50px !important;
+                color: white ;
+                background-color: #f4511e;
+                border-radius: 50px;
                 box-shadow: 0 0 0px 3px #f4511e;
             }
             .today_month{
-                color: white !important;
-                background-color: #f4511e !important;
-                border-radius: 50px !important;
+                color: white;
+                background-color: #f4511e;
+                border-radius: 50px;
             }
         }
     }
@@ -132,23 +132,20 @@
     justify-content: center;
     align-items: center;
 }
-@media screen and (max-width: 805px){
-    .calendar{
-        width: 540px;
-    }
-    .month_name{
-        flex: 1 0 calc(27% - 0px) !important;
-        padding: 10px 5px !important;
-    }
-}
-@media screen and (max-width: 870px){
-    .month_name{
-        // flex: 1 0 calc(28% - 0px) !important;
-        margin: 5px 10px !important;
-    }
-}
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 1024px) {
+    .month_name{
+        margin: 5px 10px;
+    }
+} 
+@media screen and (max-width: 800px) {
+    .month_name{
+        flex: 1 0 27% !important;
+        padding: 10px 5px !important;
+        margin: 5px 5px 5px 5px !important;
+    }
+} 
+@media screen and (max-width: 480px) {
     .day_number{
         margin-bottom: 5px;
         padding: 0;
@@ -158,7 +155,11 @@
     .day_number:hover{
         box-shadow: 0 0 0px 0px #f4511e;
     }
-    .header span{
-        width: 50% !important;
+    .month_name{
+        flex: 1 0 29% !important;
+
+        span{
+            font-size: 18px !important;
+        }
     }
 }

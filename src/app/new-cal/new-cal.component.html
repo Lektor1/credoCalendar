@@ -1,10 +1,12 @@
 <div class="calendar">
     <div class="header">
         <i class="fa fa-angle-left" (click)="previous()"></i>
+        <!-- <img class="angle-left" src="/assets/imgs/icons/back.png" alt=""> -->
         <div>
             <span id="title" (click)="change()">{{DisMnth | translate}} {{DisYear}} {{DisDecade}}</span>
         </div>
         <i class="fa fa-angle-right" (click)="next()"></i>
+        <!-- <img class="angle-right" src="/assets/imgs/icons/next.png" alt=""> -->
     </div>
     <!-- dgeebi -->
     <div class="month_container" *ngIf="StateOn === 'StateDay'">
@@ -49,7 +51,7 @@
     <!-- wlebi -->
     <div class="month_container" *ngIf="StateOn === 'StateYear'">
         <div class="year_numbers">
-            <div class="year" *ngFor="let yr of Year_numbers" [ngClass]="{'today_month': yr == Year}">
+            <div class="year" *ngFor="let yr of Year_numbers" [ngClass]="{'today_month': yr == todayYear}">
                 <span>{{yr}}</span>
             </div>
         </div>
